@@ -7,7 +7,7 @@ The Repo of the Official [Hikari](https://hikaribot.me) Discord Bot
 
 1. Fork or Clone this repo.
 
-2. Install all requirements in ```requirements.txt```
+2. Install all requirements in ```requirements.txt``` (I recommend a venv)
 
 3. Setup a PostgreSQL Database and Import the ```hikaridb.psql``` file
 
