@@ -14,6 +14,9 @@ The Repo of the Official [Hikari](https://hikaribot.me) Discord Bot
 4. Create a MongoDB Database for Prefixes on MongoDB Atlas
 
 5. Fill out `data\config.json`
-\n
+
+
 
 Feel free to Contribute
+
+For new Features, Create a Pull request
