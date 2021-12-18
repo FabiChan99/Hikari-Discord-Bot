@@ -1,0 +1,23 @@
+{
+  "DC-Token": "TOKEN HERE",
+  "DB-Token": "MONGO DB URI HWEW",
+  "Time-Syntax": "%d.%m.%Y %H:%M:%S",
+  "Bot": "hikari",
+  "Files": 16,
+  "Prefix": "FALLBACKPREFIX HERE",
+  "Developer-ID": 00000000000000000,
+  "Color": [ 37, 204, 247 ],
+  "Version": "1.0.0",
+  "Cooldown": [ 1, 1 ],
+  "PSQLHost": "example.de",
+  "PSQLUser": "username",
+  "PSQLDB": "secretdatabase",
+  "PSQLPass": "shallnotpAA",
+  "Status-Timeout": 60,
+  "Status": [ "Prefix: h!" ],
+  "Chop-Icon": "https://cdn.discordapp.com/attachments/836905275252408341/837262172081356831/StupidHaken.png",
+  "Cross-Icon": "https://cdn.discordapp.com/attachments/836905275252408341/837262169987874846/StupidCross.png",
+  "KawaiiAPIToken": "token from kawaii.red here",
+  "KawaiiAPIUrl": "https://kawaii.red/api/gif/",
+  "KawaiiAPIType": "txt"
+}

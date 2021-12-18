@@ -1,0 +1,1080 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
+
+-- Started on 2021-12-18 20:11:16
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 209 (class 1259 OID 16397)
+-- Name: afk; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.afk (
+    userid bigint,
+    reason character varying,
+    afktime character varying,
+    gid bigint
+);
+
+
+ALTER TABLE public.afk OWNER TO discord;
+
+--
+-- TOC entry 210 (class 1259 OID 16402)
+-- Name: antiinvite; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.antiinvite (
+    gid bigint,
+    index integer
+);
+
+
+ALTER TABLE public.antiinvite OWNER TO discord;
+
+--
+-- TOC entry 211 (class 1259 OID 16405)
+-- Name: antijoin; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.antijoin (
+    index integer,
+    guildid bigint
+);
+
+
+ALTER TABLE public.antijoin OWNER TO discord;
+
+--
+-- TOC entry 212 (class 1259 OID 16408)
+-- Name: backgrounddb; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.backgrounddb (
+    index integer,
+    path character varying
+);
+
+
+ALTER TABLE public.backgrounddb OWNER TO discord;
+
+--
+-- TOC entry 213 (class 1259 OID 16413)
+-- Name: badword; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.badword (
+    guildid bigint,
+    word character varying
+);
+
+
+ALTER TABLE public.badword OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 16418)
+-- Name: cmdstats; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cmdstats (
+    cmd character varying,
+    cnt bigint
+);
+
+
+ALTER TABLE public.cmdstats OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16423)
+-- Name: company; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.company (
+    guild_id integer,
+    user_id integer,
+    name text,
+    stocks integer,
+    price numeric
+);
+
+
+ALTER TABLE public.company OWNER TO discord;
+
+--
+-- TOC entry 3429 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: TABLE company; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.company IS 'TRIAL';
+
+
+--
+-- TOC entry 3430 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: COLUMN company.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.company.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3431 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: COLUMN company.user_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.company.user_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3432 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: COLUMN company.name; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.company.name IS 'TRIAL';
+
+
+--
+-- TOC entry 3433 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: COLUMN company.stocks; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.company.stocks IS 'TRIAL';
+
+
+--
+-- TOC entry 3434 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: COLUMN company.price; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.company.price IS 'TRIAL';
+
+
+--
+-- TOC entry 216 (class 1259 OID 16428)
+-- Name: cooldown; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.cooldown (
+    guild_id bigint,
+    user_id bigint,
+    command text,
+    length integer,
+    "time" bigint
+);
+
+
+ALTER TABLE public.cooldown OWNER TO discord;
+
+--
+-- TOC entry 3435 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: TABLE cooldown; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.cooldown IS 'TRIAL';
+
+
+--
+-- TOC entry 3436 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: COLUMN cooldown.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.cooldown.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3437 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: COLUMN cooldown.user_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.cooldown.user_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3438 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: COLUMN cooldown.command; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.cooldown.command IS 'TRIAL';
+
+
+--
+-- TOC entry 3439 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: COLUMN cooldown.length; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.cooldown.length IS 'TRIAL';
+
+
+--
+-- TOC entry 3440 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: COLUMN cooldown."time"; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.cooldown."time" IS 'TRIAL';
+
+
+--
+-- TOC entry 217 (class 1259 OID 16433)
+-- Name: currency; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.currency (
+    guild_id bigint,
+    user_id bigint,
+    coins bigint,
+    multiplier numeric,
+    daily numeric,
+    company_count integer
+);
+
+
+ALTER TABLE public.currency OWNER TO discord;
+
+--
+-- TOC entry 3441 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: TABLE currency; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.currency IS 'TRIAL';
+
+
+--
+-- TOC entry 3442 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: COLUMN currency.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.currency.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3443 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: COLUMN currency.user_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.currency.user_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3444 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: COLUMN currency.coins; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.currency.coins IS 'TRIAL';
+
+
+--
+-- TOC entry 3445 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: COLUMN currency.multiplier; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.currency.multiplier IS 'TRIAL';
+
+
+--
+-- TOC entry 3446 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: COLUMN currency.daily; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.currency.daily IS 'TRIAL';
+
+
+--
+-- TOC entry 3447 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: COLUMN currency.company_count; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.currency.company_count IS 'TRIAL';
+
+
+--
+-- TOC entry 218 (class 1259 OID 16438)
+-- Name: embedcolor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.embedcolor (
+    gid bigint,
+    color character varying
+);
+
+
+ALTER TABLE public.embedcolor OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16443)
+-- Name: glevel; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.glevel (
+    enabled text,
+    user_id text,
+    exp text,
+    level text,
+    guild_id text
+);
+
+
+ALTER TABLE public.glevel OWNER TO discord;
+
+--
+-- TOC entry 3448 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: TABLE glevel; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.glevel IS 'TRIAL';
+
+
+--
+-- TOC entry 3449 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: COLUMN glevel.enabled; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.glevel.enabled IS 'TRIAL';
+
+
+--
+-- TOC entry 3450 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: COLUMN glevel.user_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.glevel.user_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3451 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: COLUMN glevel.exp; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.glevel.exp IS 'TRIAL';
+
+
+--
+-- TOC entry 3452 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: COLUMN glevel.level; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.glevel.level IS 'TRIAL';
+
+
+--
+-- TOC entry 3453 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: COLUMN glevel.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.glevel.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 220 (class 1259 OID 16448)
+-- Name: guild; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.guild (
+    guildid bigint,
+    ownerid bigint,
+    voicechannelid bigint,
+    voicecategoryid bigint
+);
+
+
+ALTER TABLE public.guild OWNER TO discord;
+
+--
+-- TOC entry 3454 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: TABLE guild; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.guild IS 'TRIAL';
+
+
+--
+-- TOC entry 3455 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: COLUMN guild.guildid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.guild.guildid IS 'TRIAL';
+
+
+--
+-- TOC entry 3456 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: COLUMN guild.ownerid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.guild.ownerid IS 'TRIAL';
+
+
+--
+-- TOC entry 3457 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: COLUMN guild.voicechannelid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.guild.voicechannelid IS 'TRIAL';
+
+
+--
+-- TOC entry 3458 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: COLUMN guild.voicecategoryid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.guild.voicecategoryid IS 'TRIAL';
+
+
+--
+-- TOC entry 221 (class 1259 OID 16451)
+-- Name: guilds; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.guilds (
+    guild_id character varying NOT NULL,
+    members text
+);
+
+
+ALTER TABLE public.guilds OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 16456)
+-- Name: hikarivotes; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.hikarivotes (
+    type text,
+    userid bigint,
+    botid bigint,
+    weekend boolean,
+    "time" timestamp without time zone,
+    length bigint
+);
+
+
+ALTER TABLE public.hikarivotes OWNER TO discord;
+
+--
+-- TOC entry 3459 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: TABLE hikarivotes; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.hikarivotes IS 'TRIAL';
+
+
+--
+-- TOC entry 3460 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: COLUMN hikarivotes.type; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.hikarivotes.type IS 'TRIAL';
+
+
+--
+-- TOC entry 3461 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: COLUMN hikarivotes.userid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.hikarivotes.userid IS 'TRIAL';
+
+
+--
+-- TOC entry 3462 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: COLUMN hikarivotes.botid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.hikarivotes.botid IS 'TRIAL';
+
+
+--
+-- TOC entry 3463 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: COLUMN hikarivotes.weekend; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.hikarivotes.weekend IS 'TRIAL';
+
+
+--
+-- TOC entry 3464 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: COLUMN hikarivotes."time"; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.hikarivotes."time" IS 'TRIAL';
+
+
+--
+-- TOC entry 223 (class 1259 OID 16461)
+-- Name: imageonly; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.imageonly (
+    guildid bigint,
+    channelid bigint
+);
+
+
+ALTER TABLE public.imageonly OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 16464)
+-- Name: invitedb; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.invitedb (
+    guildid bigint,
+    inviteurl character varying,
+    invts character varying,
+    uname character varying
+);
+
+
+ALTER TABLE public.invitedb OWNER TO discord;
+
+--
+-- TOC entry 225 (class 1259 OID 16469)
+-- Name: marry; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.marry (
+    ctxid bigint,
+    targetid bigint,
+    timestampm character varying,
+    familyid integer
+);
+
+
+ALTER TABLE public.marry OWNER TO discord;
+
+--
+-- TOC entry 226 (class 1259 OID 16474)
+-- Name: picturecheck; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.picturecheck (
+    index integer,
+    guildid bigint
+);
+
+
+ALTER TABLE public.picturecheck OWNER TO discord;
+
+--
+-- TOC entry 227 (class 1259 OID 16477)
+-- Name: raidsafemode; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.raidsafemode (
+    index integer,
+    guildid bigint
+);
+
+
+ALTER TABLE public.raidsafemode OWNER TO discord;
+
+--
+-- TOC entry 228 (class 1259 OID 16480)
+-- Name: ranks; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.ranks (
+    role_id text,
+    guild_id text,
+    level text
+);
+
+
+ALTER TABLE public.ranks OWNER TO discord;
+
+--
+-- TOC entry 3465 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: TABLE ranks; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.ranks IS 'TRIAL';
+
+
+--
+-- TOC entry 3466 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: COLUMN ranks.role_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.ranks.role_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3467 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: COLUMN ranks.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.ranks.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3468 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: COLUMN ranks.level; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.ranks.level IS 'TRIAL';
+
+
+--
+-- TOC entry 229 (class 1259 OID 16485)
+-- Name: reactonmention; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.reactonmention (
+    guildid bigint,
+    setting character varying
+);
+
+
+ALTER TABLE public.reactonmention OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1259 OID 16490)
+-- Name: roleplayct; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.roleplayct (
+    userid bigint,
+    cmd character varying,
+    counter bigint
+);
+
+
+ALTER TABLE public.roleplayct OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1259 OID 16495)
+-- Name: tempvcguildsettings; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.tempvcguildsettings (
+    guildid bigint,
+    channelname text,
+    channellimit integer
+);
+
+
+ALTER TABLE public.tempvcguildsettings OWNER TO discord;
+
+--
+-- TOC entry 3469 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: TABLE tempvcguildsettings; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.tempvcguildsettings IS 'TRIAL';
+
+
+--
+-- TOC entry 3470 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: COLUMN tempvcguildsettings.guildid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.tempvcguildsettings.guildid IS 'TRIAL';
+
+
+--
+-- TOC entry 3471 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: COLUMN tempvcguildsettings.channelname; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.tempvcguildsettings.channelname IS 'TRIAL';
+
+
+--
+-- TOC entry 3472 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: COLUMN tempvcguildsettings.channellimit; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.tempvcguildsettings.channellimit IS 'TRIAL';
+
+
+--
+-- TOC entry 232 (class 1259 OID 16500)
+-- Name: tlevel; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.tlevel (
+    user_id text,
+    guild_id text,
+    xp_time text
+);
+
+
+ALTER TABLE public.tlevel OWNER TO discord;
+
+--
+-- TOC entry 3473 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: TABLE tlevel; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.tlevel IS 'TRIAL';
+
+
+--
+-- TOC entry 3474 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: COLUMN tlevel.user_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.tlevel.user_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3475 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: COLUMN tlevel.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.tlevel.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3476 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: COLUMN tlevel.xp_time; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.tlevel.xp_time IS 'TRIAL';
+
+
+--
+-- TOC entry 233 (class 1259 OID 16505)
+-- Name: troleplayct; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.troleplayct (
+)
+INHERITS (public.roleplayct);
+
+
+ALTER TABLE public.troleplayct OWNER TO discord;
+
+--
+-- TOC entry 234 (class 1259 OID 16510)
+-- Name: uroleplayct; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.uroleplayct (
+    userid bigint,
+    targetid bigint,
+    cmd character varying,
+    counter bigint
+);
+
+
+ALTER TABLE public.uroleplayct OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1259 OID 16515)
+-- Name: userbg; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.userbg (
+    user_id bigint,
+    index integer
+);
+
+
+ALTER TABLE public.userbg OWNER TO discord;
+
+--
+-- TOC entry 236 (class 1259 OID 16518)
+-- Name: usersettings; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.usersettings (
+    userid bigint,
+    channelname text,
+    channellimit integer,
+    trial772 character(1)
+);
+
+
+ALTER TABLE public.usersettings OWNER TO discord;
+
+--
+-- TOC entry 3477 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: TABLE usersettings; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.usersettings IS 'TRIAL';
+
+
+--
+-- TOC entry 3478 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: COLUMN usersettings.userid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.usersettings.userid IS 'TRIAL';
+
+
+--
+-- TOC entry 3479 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: COLUMN usersettings.channelname; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.usersettings.channelname IS 'TRIAL';
+
+
+--
+-- TOC entry 3480 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: COLUMN usersettings.channellimit; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.usersettings.channellimit IS 'TRIAL';
+
+
+--
+-- TOC entry 3481 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: COLUMN usersettings.trial772; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.usersettings.trial772 IS 'TRIAL';
+
+
+--
+-- TOC entry 237 (class 1259 OID 16523)
+-- Name: vlevel; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.vlevel (
+    user_id text,
+    guild_id text,
+    join_time text,
+    start_time text,
+    channel_id text,
+    trial726 character(1),
+    trial744 character(1),
+    trial821 character(1)
+);
+
+
+ALTER TABLE public.vlevel OWNER TO discord;
+
+--
+-- TOC entry 3482 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: TABLE vlevel; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.vlevel IS 'TRIAL';
+
+
+--
+-- TOC entry 3483 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.user_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.user_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3484 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.guild_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.guild_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3485 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.join_time; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.join_time IS 'TRIAL';
+
+
+--
+-- TOC entry 3486 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.start_time; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.start_time IS 'TRIAL';
+
+
+--
+-- TOC entry 3487 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.channel_id; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.channel_id IS 'TRIAL';
+
+
+--
+-- TOC entry 3488 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.trial726; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.trial726 IS 'TRIAL';
+
+
+--
+-- TOC entry 3489 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.trial744; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.trial744 IS 'TRIAL';
+
+
+--
+-- TOC entry 3490 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: COLUMN vlevel.trial821; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.vlevel.trial821 IS 'TRIAL';
+
+
+--
+-- TOC entry 238 (class 1259 OID 16528)
+-- Name: voicechannel; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.voicechannel (
+    userid bigint,
+    voiceid bigint,
+    trial772 character(1)
+);
+
+
+ALTER TABLE public.voicechannel OWNER TO discord;
+
+--
+-- TOC entry 3491 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: TABLE voicechannel; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON TABLE public.voicechannel IS 'TRIAL';
+
+
+--
+-- TOC entry 3492 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN voicechannel.userid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.voicechannel.userid IS 'TRIAL';
+
+
+--
+-- TOC entry 3493 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN voicechannel.voiceid; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.voicechannel.voiceid IS 'TRIAL';
+
+
+--
+-- TOC entry 3494 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN voicechannel.trial772; Type: COMMENT; Schema: public; Owner: discord
+--
+
+COMMENT ON COLUMN public.voicechannel.trial772 IS 'TRIAL';
+
+
+--
+-- TOC entry 239 (class 1259 OID 16531)
+-- Name: welcome; Type: TABLE; Schema: public; Owner: discord
+--
+
+CREATE TABLE public.welcome (
+    guild_id character varying,
+    msg text,
+    role_name character varying,
+    role character varying,
+    channel character varying,
+    embed character varying,
+    welc character varying
+);
+
+
+ALTER TABLE public.welcome OWNER TO discord;
+
+--
+-- TOC entry 3284 (class 2606 OID 16537)
+-- Name: guilds guilds_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.guilds
+    ADD CONSTRAINT guilds_pkey PRIMARY KEY (guild_id);
+
+
+-- Completed on 2021-12-18 20:11:17
+
+--
+-- PostgreSQL database dump complete
+--
+
