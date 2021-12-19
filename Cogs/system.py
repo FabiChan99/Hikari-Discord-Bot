@@ -1,7 +1,5 @@
 # import
 import discord
-import dbl
-import statcord
 from Utils.data import *
 
 setting_icon = "https://cdn.discordapp.com/attachments/836905275252408341/838442346345005096/StupidSettings.png"
@@ -49,22 +47,6 @@ class System(commands.Cog):
         cmdstats(self, ctx)
 
 
-
-#    @commands.command(aliases=['startyoutube'])
-#    async def startyt(self, ctx):
-#
-#        link = await self.together.create_link(ctx.author.voice.channel.id, 'youtube')
-#        embed = discord.Embed(description=f'[Click here]({link}) to start YouTube or use the link that was sent .',
-#                              color=0x5865F2)
-#        embed.set_author(name='Here is your activity link',
-#                         icon_url='https://cdn.discordapp.com/emojis/828650661972672623.png?v=1')
-#        embed.set_footer(text='If the link is invalid check if the bot has permissions to the voice channel')
-#        await ctx.send(embed=embed,
-#                                  content=link)
-#        #except:
-#            #embed = discord.Embed(description="You need in a Voice Channel to use this feature",
-#            #                      color=guild_embedcolor_ctx(self, ctx))
-#            #await ctx.send(embed=embed)
 
 
     # prefix
